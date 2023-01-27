@@ -1,12 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
-    "pro": "NODE_ENV=production node index.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

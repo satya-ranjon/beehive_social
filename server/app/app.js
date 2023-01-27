@@ -1,12 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
-import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+
+// INTERNAL IMPORT
+import authRoute from "../routers/auth.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -21,26 +22,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use("assets", express.static(path.join(__dirname, "public/assets")));
 
-/* FILE STORAGE */
-const storage = multer.diskStorage({
-  destination: function (req, file, cd) {
-    cd(null, "public/assets");
-  },
-  filename: function (req, file, cd) {
-    cd(null, file.originalname);
-  },
-});
+/* ROUTES CONNECTION */
+app.use("/auth", authRoute);
 
-const upload = multer({ storage });
-
-/* DATABASE SETUP */
-const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    app.listen(PORT, () => console.log(`....Server run on Port ${PORT} .....`));
-  })
-  .catch((error) => console.log(`${error} did not connect`));
+export default app;
