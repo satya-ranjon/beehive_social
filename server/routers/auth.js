@@ -1,8 +1,8 @@
 import express from "express";
+import { register } from "../controllers/register.js";
+
 const router = express.Router();
 
-router.post("/login", (req, res) => {
-  console.log("auth");
-});
+router.post("/register", register);
 
 export default router;

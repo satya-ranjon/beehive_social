@@ -1,34 +1,35 @@
 import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const UserSchema = new mongoose(
+const UserSchema = new Schema(
   {
     firstName: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
       min: 2,
       max: 50,
     },
     lastName: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
       min: 2,
       max: 50,
     },
     email: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
     },
     password: {
-      typeof: String,
-      require: true,
+      type: String,
+      required: true,
       min: 4,
     },
     picturePath: {
-      typeof: String,
+      type: String,
       default: "",
     },
     friends: {
-      typeof: Array,
+      type: Array,
       default: [],
     },
     location: String,
