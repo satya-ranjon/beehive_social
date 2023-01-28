@@ -8,6 +8,8 @@ import { fileURLToPath } from "url";
 
 // INTERNAL IMPORT
 import authRoute from "../routers/auth.js";
+import userRoute from "../routers/users.js";
+import postRoute from "../routers/posts.js";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
@@ -24,5 +26,7 @@ app.use("assets", express.static(path.join(__dirname, "public/assets")));
 
 /* ROUTES CONNECTION */
 app.use("/auth", authRoute);
+app.use("/user", userRoute);
+app.use("/posts", postRoute);
 
 export default app;
