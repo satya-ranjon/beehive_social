@@ -1,5 +1,5 @@
-import User from "../models/users";
-import { formattedFriends } from "../services/user";
+import User from "../models/users.js";
+import { formattedFriends } from "../services/user.js";
 
 /** READ */
 export const getUser = async (req, res) => {
